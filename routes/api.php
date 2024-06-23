@@ -34,8 +34,9 @@ Route::group(['middleware' => 'api'], function () {
 });
 
 Route::apiResource('roles', RoleController::class);
-Route::apiResource('nota_jalans', NotaJalanController::class);
-Route::apiResource('barang_pemesanans', BarangPemesananController::class);
-Route::apiResource('invoice_pemesanans', InvoicePemesananController::class);
-Route::apiResource('barangs', BarangController::class);
-Route::apiResource('pemesanans', PemesananController::class);
+Route::apiResource('nota-jalans', NotaJalanController::class);
+Route::apiResource('barang-pemesanans', BarangPemesananController::class);
+Route::apiResource('invoices', InvoicePemesananController::class);
+
+Route::apiResource('barangs', BarangController::class); // edit
+Route::apiResource('pemesanans', PemesananController::class); // edit
