@@ -35,13 +35,12 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (!$token = Auth::attempt($credentials)) {
+        if (!$token = Auth::guard('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken(JWTAuth::fromUser($credentials));
+        return $this->respondWithToken($token);
     }
-
     public function logout()
     {
         Auth::logout();
