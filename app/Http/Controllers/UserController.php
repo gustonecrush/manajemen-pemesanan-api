@@ -41,7 +41,13 @@ class UserController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        return response()->json([
+            'status' => 'success',
+            'authorization' => [
+                'token' => $token,
+                'type' => 'bearer',
+            ],
+        ]);
     }
 
     public function logout()
