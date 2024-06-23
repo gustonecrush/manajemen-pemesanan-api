@@ -35,11 +35,12 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        $token = Auth::attempt($credentials);
-
-        if (!$token) {
+        if (!$token = Auth::guard('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+
+        // Fetch the authenticated user
+        $user = Auth::guard('api')->user();
 
         return response()->json([
             'status' => 'success',
@@ -47,6 +48,7 @@ class UserController extends Controller
                 'token' => $token,
                 'type' => 'bearer',
             ],
+            'user' => $user, // Include the user data in the response
         ]);
     }
 
