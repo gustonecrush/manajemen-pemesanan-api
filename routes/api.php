@@ -41,3 +41,4 @@ Route::apiResource('invoices', InvoicePemesananController::class);
 Route::apiResource('barangs', BarangController::class); // edit
 Route::apiResource('pemesanans', PemesananController::class); // edit
 Route::post('pemesanans/{id}', [PemesananController::class, 'updatePemesanan']);
+Route::post('barangs/{id}', [BarangController::class, 'updateBarang']);

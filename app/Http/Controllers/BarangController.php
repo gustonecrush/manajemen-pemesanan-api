@@ -32,7 +32,7 @@ class BarangController extends Controller
         return response()->json($barang);
     }
 
-    public function update(Request $request, $id)
+    public function updateBarang(Request $request, $id)
     {
         $request->validate([
             'kode_barang' => 'sometimes|string|unique:barangs,kode_barang,' . $id . '|max:255',
@@ -41,7 +41,7 @@ class BarangController extends Controller
             'stok_barang' => 'sometimes|integer',
         ]);
 
-        $barang = Barang::findOrFail($id);
+        $barang = Barang::where('id', '=', $id);
         $barang->update($request->all());
         return response()->json($barang);
     }
