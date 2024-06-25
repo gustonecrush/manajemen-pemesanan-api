@@ -9,7 +9,7 @@ class PemesananController extends Controller
 {
     public function index()
     {
-        $pemesanans = Pemesanan::all();
+        $pemesanans = Pemesanan::with('barangs.barang')->get();
         return response()->json($pemesanans);
     }
 
@@ -21,6 +21,7 @@ class PemesananController extends Controller
             'detail_pemesanan' => 'required|string',
             'tanggal_pemesanan' => 'required|date',
             'unit' => 'required|integer',
+            'pemesan' => 'sometimes|string',
         ]);
 
         $pemesanan = Pemesanan::create($request->all());
@@ -39,6 +40,7 @@ class PemesananController extends Controller
             'user_id' => 'sometimes|exists:users,id',
             'pemesanan' => 'sometimes|string|max:255',
             'detail_pemesanan' => 'sometimes|string',
+            'pemesan' => 'sometimes|string',
             'tanggal_pemesanan' => 'sometimes|date',
             'unit' => 'sometimes|integer',
         ]);

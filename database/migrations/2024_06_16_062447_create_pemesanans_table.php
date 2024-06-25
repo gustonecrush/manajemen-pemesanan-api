@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('pemesanan');
             $table->string('detail_pemesanan');
             $table->string('tanggal_pemesanan');
+            $table->string('pemesan');
             $table->integer('unit');
             $table->timestamps();
         });

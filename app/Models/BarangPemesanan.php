@@ -18,4 +18,9 @@ class BarangPemesanan extends Model
     {
         return $this->belongsTo(Pemesanan::class, 'id');
     }
+
+    public function getBarangDataAttribute()
+    {
+        return $this->barang;
+    }
 }
