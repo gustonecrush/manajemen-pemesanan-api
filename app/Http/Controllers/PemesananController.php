@@ -45,7 +45,7 @@ class PemesananController extends Controller
             'unit' => 'sometimes|integer',
         ]);
 
-        $pemesanan = Pemesanan::findOrFail($id);
+        $pemesanan = Pemesanan::where('id', '=', $id)->first();
         $pemesanan->update($request->all());
         return response()->json($pemesanan);
     }
