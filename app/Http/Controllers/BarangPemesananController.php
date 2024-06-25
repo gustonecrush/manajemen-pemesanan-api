@@ -18,6 +18,7 @@ class BarangPemesananController extends Controller
         $request->validate([
             'id_barang' => 'required|exists:barangs,id',
             'id_pemesanan' => 'required|exists:pemesanans,id',
+            'kuantitas' => 'required'
         ]);
 
         $barangPemesanan = BarangPemesanan::create($request->all());
@@ -35,6 +36,7 @@ class BarangPemesananController extends Controller
         $request->validate([
             'id_barang' => 'sometimes|exists:barangs,id',
             'id_pemesanan' => 'sometimes|exists:pemesanans,id',
+            'kuantitas' => 'required'
         ]);
 
         $barangPemesanan = BarangPemesanan::findOrFail($id);
