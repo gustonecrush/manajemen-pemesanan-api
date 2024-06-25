@@ -34,7 +34,7 @@ class PemesananController extends Controller
         return response()->json($pemesanan);
     }
 
-    public function update(Request $request, $id)
+    public function updatePemesanan(Request $request, $id)
     {
         $request->validate([
             'user_id' => 'sometimes|exists:users,id',
